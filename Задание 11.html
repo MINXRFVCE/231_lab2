@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width, initial-scale=1.0">
+        <title>"Лаборатоная работа №2 - 3 часть"</title>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+        <style>        
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .image-container {
+            display: flex;
+        }
+        .image-container img {
+            width: 50%;
+        }
+
+        ol {
+            list-style-type:decimal;
+        }
+
+        </style>
+    </head>
+
+    <body style="background-color:burlywood;">
+        <div id="map"></div>
+        <nav>
+            <ul>
+                <li><a href="Лабораторная работа 2.html">Первая часть</a></li>
+                <li><a href="Задание 7.html">Вторая часть</a></li>
+                <li><a href="#music">Аудио</a></li>
+                <li><a href="#buy">Заказать товар</a></li>
+                <li><a href="#video">Обзор</a></li>
+            </ul>
+        </nav>
+        <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var marker = L.marker([51.505, -0.09]).addTo(map);
+
+        marker.bindPopup('Это Вестминстер, Лондон').openPopup();
+        </script>
+
+        <audio controls id="music">
+            <source src="95 bpm.wav" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио-тег.
+        </audio>
+
+        <form id="buy">
+            <label for="product">Сувенир:</label>
+            <select id="product">
+              <option value="apple">Значок</option>
+              <option value="orange">Магнитик</option>
+              <option value="banana">Флаг</option>
+            </select>
+        
+            <label for="quantity">Количество:</label>
+            <input type="number" id="quantity" min="1" value="1">
+        
+            <input type="submit" value="Заказать">
+        </form>
+
+        <iframe src="https://www.youtube.com/watch?v=N_1SLOLF0fI" width="100%" height="300" id="video"></iframe>
+
+
+        <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name">
+          
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+          
+            <input type="submit" value="Отправить">
+        </form>
+
+        <script>
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const name = document.querySelector('#name').value;
+                const email = document.querySelector('#email').value;
+
+                if (name === '') {
+                alert('Пожалуйста, введите ваше имя.');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Пожалуйста, введите корректный email.');
+                return;
+            }
+
+            console.log(`Имя: ${name}`);
+            console.log(`Email: ${email}`);
+        });
+
+
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        </script>
+
+        
+    </body>
+</html>

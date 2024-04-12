@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider</title>
+    <style>
+        .slider {
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .slider__wrapper {
+            overflow: hidden;
+        }
+        .slider__container {
+            display: flex;
+            font-size: 7rem;
+            will-change: transform;
+            transition: transform 0.5s cubic-bezier(0.7, -0.22, 1, -0.24);
+        }
+
+        .slider__item {
+            flex-shrink: 0;
+            flex-grow: 1;
+            flex-basis: 100%;
+            max-width: 100%;
+            height: 300px;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            width: 250px;
+            border-radius: 10px;
+            background: #198754;
+        }
+        .slider__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slider__btn {
+            position: absolute;
+            top: 50%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            background: rgba(119, 119, 119, 0.39);
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .slider__btn_prev {
+            left: 0;
+        }
+        .slider__btn_next {
+            right: 0;
+        }
+        .slider__btn_hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="slider" style="width: 500px">
+    <div class="slider__wrapper">
+        <div class="slider__container" id="slider">
+            <div class="slider__item">
+                <img src="мопс.jpg" alt="мопс 1">
+            </div>
+            <div class="slider__item">
+                <img src="мопс.jpg" alt="мопс 2">
+            </div>
+            <div class="slider__item">
+                <img src="мопс.jpg" alt="мопс 3">
+            </div>
+            <div class="slider__item">
+                <img src="мопс.jpg" alt="мопс 4">
+            </div>
+        </div>
+    </div>
+    <button class="slider__btn slider__btn_prev"><</button>
+    <button class="slider__btn slider__btn_next"> ></button>
+</div>
+
+<script>
+    class Slider {
+        constructor(nameSliderItems, btnPrev, btnNext, idSlider) {
+            this.slides = document.getElementsByClassName(nameSliderItems);
+            this.index = 0;
+            this.width = 0;
+            this.widthAll = 0;
+            this.slider = document.getElementById(idSlider);
+            this.btnPrev = document.getElementsByClassName(btnPrev)[0];
+            this.btnNext = document.getElementsByClassName(btnNext)[0];
+            this.btnPrev.addEventListener('click', this.prev.bind(this));
+            this.btnNext.addEventListener('click', this.next.bind(this));
+            for (let i = 0; i < this.slides.length; i++) {
+                this.widthAll += this.slides[i].offsetWidth;
+            }
+
+            this.changeBtn();
+        }
+        show (index) {
+            if (index > this.slides.length - 1) {
+                console.log(index )
+                this.index = 1;
+                this.width = 0;
+            }
+
+            if (index < 1) {
+                this.index = this.slides.length - 1
+            }
+
+            let i = 0;
+            for (i; i < this.slides.length; i++) {
+                this.slides[i].className = this.slides[i].className.replace(' slider__item_active ', '');
+            }
+
+            this.slides[this.index].className = this.slides[this.index].className.replace('', ' slider__item_active ');
+        }
+
+        next () {
+            this.show(this.index += 1);
+            this.width += this.slides[this.index].offsetWidth;
+            this.changePosition()
+        }
+
+        prev () {
+            this.show(this.index -= 1);
+            this.width -= this.slides[this.index].offsetWidth;
+            this.changePosition()
+        }
+
+        changeBtn () {
+            if (this.width + this.slides[this.index].offsetWidth >= this.widthAll) {
+                this.btnNext.className =  this.btnNext.className.replace('', ' slider__btn_hidden ');
+            } else {
+                this.btnNext.className =  this.btnNext.className.replace(' slider__btn_hidden ', '');
+            }
+
+            if (this.width === 0) {
+                this.btnPrev.className =  this.btnPrev.className.replace('', ' slider__btn_hidden ');
+            } else {
+                this.btnPrev.className =  this.btnPrev.className.replace(' slider__btn_hidden ', '');
+            }
+        }
+
+        changePosition () {
+            this.changeBtn();
+            this.slider.setAttribute('style', `transform: translate3d(${-this.width}px, 0px, 0px)`);
+        }
+     }
+
+    let slider = new Slider('slider__item', 'slider__btn_prev', 'slider__btn_next', 'slider');
+    slider.show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+a:link {
+    color:brown;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color:darkred;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:active {
+    color:crimson;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+img {
+    position: absolute;
+    top: 125%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+body {
+    font-family:'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav {
+    background-color: #dabebe;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer {
+    background-color: #af9f9f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+video {
+    position: absolute;
+    top: 170%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form {
+    position: absolute;
+    top: 200%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+table {
+    position: absolute;
+    top: 230%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+  
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav li {
+    margin: 0 20px;
+}
+  
+nav a {
+    text-decoration: none;
+    color: white;
+}
+  
+nav a:hover {
+    color: #ddd;
+}
+  
+@media screen and (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+    }
+  
+    nav li {
+      margin: 10px 0;
+    }
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .gallery figure {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .gallery figure a {
+    display: block;
+    width: 50%;
+    height: 50%;
+  }
+  
+  .gallery figure img {
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .gallery figure:hover img {
+    transform: scale(1.2);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .gallery figure {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  form {
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 150px; 
+    position: relative;
+  }
+  
+  form label {
+    margin-bottom: 5px;
+  }
+  
+  form select,
+  form input {
+    width: 200px;
+    padding: 5px;
+  }
+
+  iframe {
+    top: 150px;  
+    position: relative;
+  }

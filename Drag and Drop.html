@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width, initial-scale=1.0">
+        <title>"Лаборатоная работа №2 - 3 часть"</title>
+        <link rel="stylesheet" type="text/css">
+        <style>        
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .image-container {
+            display: flex;
+        }
+        .image-container img {
+            width: 50%;
+        }     
+
+        #drop-zone {
+            width: 200px;
+            height: 200px;
+            border: 1px dashed #ccc;
+            padding: 20px;
+        }
+
+        .dragging {
+            background-color: #ccc;
+        }
+        
+        </style>
+    </head>
+
+    <body style="background-color:burlywood;">    
+        <div id="item1" draggable="true" class="center">Элемент 1</div>
+        <div id="item2" draggable="true" class="center">Элемент 2</div>
+        <div id="item3" draggable="true" class="center">Элемент 3</div>
+        <div id="item4" draggable="true" class="center" class="image-container"><img src="мопс.jpg" alt="мопс" width="100" height="100"></div>
+        <div id="drop-zone" class="center">Зона сброса</div>
+        
+        <script>
+            const items = document.querySelectorAll('[draggable="true"]');
+            const dropZone = document.getElementById('drop-zone');
+
+            // Добавление обработчиков событий для перетаскивания
+            items.forEach(item => {
+                item.addEventListener('dragstart', dragStart);
+                item.addEventListener('dragend', dragEnd);
+            });
+
+            // Обработчик события начала перетаскивания
+            function dragStart(e) {
+                e.dataTransfer.setData('text/plain', e.target.id);
+                e.target.classList.add('dragging');
+            }
+
+            // Обработчик события окончания перетаскивания
+            function dragEnd(e) {
+                e.target.classList.remove('dragging');
+            }
+
+            // Добавление обработчика событий для перетаскивания в зону сброса
+            dropZone.addEventListener('dragover', dragOver);
+            dropZone.addEventListener('drop', drop);
+
+            // Обработчик события перетаскивания над зоной сброса
+            function dragOver(e) {
+                e.preventDefault();
+            }
+
+            // Обработчик события сброса в зону сброса
+            function drop(e) {
+                e.preventDefault();
+                const id = e.dataTransfer.getData('text/plain');
+                const item = document.getElementById(id);
+                dropZone.appendChild(item);
+            }
+        </script>
+
+    </body>
+</html>

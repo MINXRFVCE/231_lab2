@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>"Лаборатоная работа №2 - 3 часть"</title>
+        <link rel="stylesheet" type="text/css">
+        <style>        
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .image-container {
+            display: flex;
+        }
+        .image-container img {
+            width: 50%;
+        }  
+        
+        @media screen and (max-width: 480px) {
+            img {
+                width: 100%;
+            }
+        }   
+
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            img {
+                width: 50%;
+            }
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            img {
+                width: 33.33%;
+            }
+        }
+
+        @media screen and (min-width: 1025px) {
+            img {
+                width: 25%;
+            }
+        }
+        
+        </style>
+    </head>
+
+    <body style="background-color:burlywood;">
+        <div class="image-container">
+            <img src="мопс.jpg" alt="мопс">
+        </div>
+    </body>
+</html>

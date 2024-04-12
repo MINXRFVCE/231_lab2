@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width, initial-scale=1.0">
+        <title>"Лаборатоная работа №2 - 3 часть"</title>
+        <link rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <style>        
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .image-container {
+            display: flex;
+        }
+        .image-container img {
+            width: 50%;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1 {
+            font-weight: 700;
+        }
+
+        p {
+            font-weight: 400;
+        }
+        
+        </style>
+    </head>
+
+    <body style="background-color:burlywood;">
+        <table id="my-table">
+            <thead>
+              <tr>
+                <th data-column="имя">Имя</th>
+                <th data-column="возраст">Возраст</th>
+                <th data-column="город">Город</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-column="имя">Джон</td>
+                <td data-column="возраст">30</td>
+                <td data-column="город">Нью-Йорк</td>
+              </tr>
+              <tr>
+                <td data-column="имя">Мария</td>
+                <td data-column="возраст">25</td>
+                <td data-column="город">Париж</td>
+              </tr>
+              <tr>
+                <td data-column="имя">Боб</td>
+                <td data-column="возраст">40</td>
+                <td data-column="город">Лондон</td>
+              </tr>
+            </tbody>
+        </table>
+
+        <script>
+            const table = document.getElementById('my-table');
+            // Добавление сортировки
+            table.querySelectorAll('th').forEach(header => {
+            header.addEventListener('click', () => {
+                const column = header.getAttribute('data-column');
+                const order = header.getAttribute('data-order');
+
+            // Очистка предыдущей сортировки
+            table.querySelectorAll('th').forEach(th => {
+                th.removeAttribute('data-order');
+            });
+
+            // Установка новой сортировки
+            if (order === 'asc') {
+                header.setAttribute('data-order', 'desc');
+            } else {
+                header.setAttribute('data-order', 'asc');
+            }
+
+            // Сортировка данных
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            rows.sort((a, b) => {
+                const aValue = a.querySelector(`td[data-column="${column}"]`).textContent;
+                const bValue = b.querySelector(`td[data-column="${column}"]`).textContent;
+
+                if (order === 'asc') {
+                    return aValue.localeCompare(bValue);
+                } else {
+                    return bValue.localeCompare(aValue);
+                }
+            });
+
+            // Отображение отсортированных данных
+            table.querySelector('tbody').innerHTML = rows.map(row => row.outerHTML).join('');
+            });
+        });
+
+        // Добавление фильтрации
+        const filters = document.querySelectorAll('.filter-input');
+
+        filters.forEach(filter => {
+            filter.addEventListener('input', () => {
+            const column = filter.getAttribute('data-column');
+            const value = filter.value.toLowerCase();
+
+            // Фильтрация данных
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            rows.forEach(row => {
+            const cellValue = row.querySelector(`td[data-column="${column}"]`).textContent.toLowerCase();
+
+            if (cellValue.includes(value)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+            });
+        });
+        });
+        </script>
+        
+        <h1>ВАУ, ЭТО ЖЕ ЗАГОЛОВОК С ВЕБ-ШРИФТОМ</h1>
+        <p>Вау, это же текст с веб-шрифтом</p>
+    </body>
+</html>

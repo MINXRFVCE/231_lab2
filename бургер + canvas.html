@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width, initial-scale=1.0">
+        <title>"Лаборатоная работа №2 - 3 часть"</title>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+        <style>        
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .image-container {
+            display: flex;
+        }
+        .image-container img {
+            width: 50%;
+        }
+
+        .burger-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            z-index: 999;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .burger-menu {
+                display: block;
+            }
+        }
+
+        .burger-line {
+            width: 100%;
+            height: 5px;
+            background-color: #000;
+            margin: 5px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .burger-menu.active .burger-line:nth-child(1) {
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        .burger-menu.active .burger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active .burger-line:nth-child(3) {
+            transform: rotate(45deg) translate(-8px, -6px);
+        }        
+        
+        </style>
+    </head>
+
+    <body style="background-color:burlywood;">
+        <button class="burger-menu">
+            <span class="burger-line">1</span>
+            <span class="burger-line">2</span>
+            <span class="burger-line">3</span>
+          </button>
+        
+          <script>
+            const burgerMenu = document.querySelector('.burger-menu');
+        
+            burgerMenu.addEventListener('click', () => {
+              burgerMenu.classList.toggle('active');
+            });
+        </script>
+
+        <canvas id="my-canvas" width="500" height="500"></canvas>
+
+        <script>
+            const canvas = document.getElementById('my-canvas');
+            const ctx = canvas.getContext('2d');
+
+            // Рисуем прямоугольник
+            ctx.fillStyle = 'red';
+            ctx.fillRect(50, 50, 100, 100);
+
+            // Рисуем круг
+            ctx.beginPath();
+            ctx.arc(250, 250, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+
+            // Рисуем линию
+            ctx.beginPath();
+            ctx.moveTo(100, 100);
+            ctx.lineTo(400, 400);
+            ctx.strokeStyle = 'green';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+        </script>
+        
+    </body>
+</html>

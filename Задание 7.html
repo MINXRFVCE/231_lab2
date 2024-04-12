@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width, initial-scale=1.0">
+        <title>"Лаборатоная работа №2 - 2 часть"</title>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+        <style>        
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .image-container {
+            display: flex;
+        }
+        .image-container img {
+            width: 50%;
+        }
+
+        ol {
+            list-style-type:decimal;
+        }
+
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        </style>
+    </head>
+
+    <body style="background-color:burlywood;">
+        <header>Что такое HTML?</header>
+        <p>HTML (HyperText Markup Language) - это основной язык разметки веб-страниц. Он используется для структурирования содержимого веб-страниц.</p>
+        <h3 class="center">Где используется html?</h3>
+        <p>HTML (HyperText Markup Language) используется для создания веб-страниц. Он определяет структуру и содержимое веб-страницы, включая текст, изображения, видео, ссылки и другие элементы. HTML-страницы могут быть отображены в веб-браузерах, таких как Google Chrome, Mozilla Firefox, Safari и Internet Explorer.</p>
+        <h3 class="center">Актуален ли он в наши дни?</h3>
+        <p>Актуален, как никогда!</p>
+        <h2 class="center">Что можно делать с помощью HTML?</h2>
+        <h5>Можно создавать страницы с:</h5>
+        <ul>
+            <li>абзацами</li>
+            <li>списками</li>
+            <li>изображениями</li>
+        </ul>
+        <h5>Добавлять:</h5>
+        <ol>
+            <li>видео</li>
+            <li>музыку</li>
+            <li>геолокацию</li>
+        </ol>
+        <img src="html.jpg" alt="html">
+
+        <a href="Лабораторная работа 2.html">Вернуться на страницу 1</a>
+        <a href="Задание 11.html">Посмотреть на карты</a>
+
+        <video width="" height="240" controls>
+            <source src="HTML ЗА 5 МИНУТ _ БАЗА HTML.mp4" type="video/mp4">
+        </video>
+
+        <form action="/submit_form.php" method="post">
+            <div>
+              <label for="name">Имя:</label>
+              <input type="text" id="name" name="name">
+            </div>
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email">
+            </div>
+            <div>
+              <label for="message">Сообщение:</label>
+              <textarea id="message" name="message"></textarea>
+            </div>
+            <div>
+              <input type="submit" value="Отправить">
+            </div>
+        </form>
+
+        <table>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Описание</th>
+        </tr>
+        <tr>
+            <td>Молоко</td>
+            <td>100</td>
+            <td>Поставщик - "Поронайский Молоко Завод"</td>
+        </tr>
+        <tr>
+            <td>Йогурт</td>
+            <td>200</td>
+            <td>Поставщик - "Поронайский Молоко Завод"</td>
+        </tr>
+        <tr>
+            <td>Хлеб</td>
+            <td>50</td>
+            <td>Поставщик - "Пекарня им. Куцова"</td>
+        </tr>
+        </table>
+    </body>
+</html>
